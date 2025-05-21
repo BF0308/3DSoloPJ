@@ -5,12 +5,12 @@ public class PlayerCondition : MonoBehaviour
 {
     public UIConditions uiCondition;
 
-    Condition health
+    Condition health//UI컨디션에 있는 health를 리턴해줌
     {
         get { return uiCondition.health; }
     }
 
-    Condition stamina
+    Condition stamina////UI컨디션에 있는 stamina를 리턴해줌
     {
         get { return uiCondition.stamina; }
     }

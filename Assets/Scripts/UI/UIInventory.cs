@@ -204,21 +204,14 @@ public class UIInventory : MonoBehaviour
                             condition.StaminaHeal(selectedItem.consumables[i].value);
                             break;
                     }
-                    
                 }
+
                 if (i >= 0 && i < selectedItem.buffs.Length)
                 {
-                    switch (selectedItem.buffs[i].type)
-                    {
-                        case BuffType.Jump:
-                            StartCoroutine(effect.JumpBuff(selectedItem.buffs[i].time,selectedItem.buffs[i].value));
-                            break;
-                        case BuffType.Speed:
-                            StartCoroutine(effect.SpeedBuff(selectedItem.buffs[i].time,selectedItem.buffs[i].value));
-                            break;
-                    }
+                    Debug.Log(selectedItem.buffs[i].type.ToString());
+                    CharacterManager.Instance.Player.controller.Buff(selectedItem.buffs[i].time,
+                        selectedItem.buffs[i].value, selectedItem.buffs[i].type);
                 }
-                
             }
 
             RemoveSelectedItem();

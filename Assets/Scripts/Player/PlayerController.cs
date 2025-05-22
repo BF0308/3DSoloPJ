@@ -4,14 +4,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement")] 
-    public float moveSpeed;
+    [Header("Movement")] public float moveSpeed;
     private Vector2 curMovementInput;
     public float jumpPower;
     public LayerMask groundLayerMask;
 
-    [Header("Look")] 
-    public Transform cameraContainer;
+    [Header("Look")] public Transform cameraContainer;
     public Transform camera;
     public float minXLook;
     public float maxXLook;
@@ -19,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool canLook = true;
     public bool ChangeView = false;
     private float camCurXRot;
+
 
     private Vector2 mouseDelta;
     public Action inventory;
@@ -140,13 +139,26 @@ public class PlayerController : MonoBehaviour
         {
             if (ChangeView)
             {
-                camera.localPosition = new Vector3(0.4f,1.5f,-2.5f);
+                camera.localPosition = new Vector3(0.4f, 1.5f, -2.5f);
             }
             else
             {
-                camera.localPosition = new Vector3(0,1,0);
+                camera.localPosition = new Vector3(0, 1, 0);
             }
+
             ChangeView = !ChangeView;
+        }
+    }
+
+    public void Buff(float time, float value, BuffType type)
+    {
+        if (type == BuffType.Jump)
+        {
+            StartCoroutine(CharacterManager.Instance.Player.effect.JumpBuff(time, value));
+        }
+        else if (type == BuffType.Speed)
+        {
+            StartCoroutine(CharacterManager.Instance.Player.effect.SpeedBuff(time, value));
         }
     }
 }

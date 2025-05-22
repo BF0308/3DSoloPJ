@@ -34,7 +34,7 @@ public class ItemDataConsumable
 public class ItemDataBuff
 {
     public BuffType type;
-    public float value;
+    public float time;
 }
 //에셋화 시킬때 쓸 파일이름 사용할때 쓸 매뉴이름
 [CreateAssetMenu(fileName = "Item", menuName = "New Item")]

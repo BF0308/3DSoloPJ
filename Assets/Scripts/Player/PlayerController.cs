@@ -10,11 +10,14 @@ public class PlayerController : MonoBehaviour
     public float jumpPower;
     public LayerMask groundLayerMask;
 
-    [Header("Look")] public Transform cameraContainer;
+    [Header("Look")] 
+    public Transform cameraContainer;
+    public Transform camera;
     public float minXLook;
     public float maxXLook;
     public float lookSensitivity;
     public bool canLook = true;
+    public bool ChangeView = false;
     private float camCurXRot;
 
     private Vector2 mouseDelta;
@@ -128,7 +131,22 @@ public class PlayerController : MonoBehaviour
     public void ToggleCursor()
     {
         bool toggle = Cursor.lockState == CursorLockMode.Locked;
-        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
-        canLook = !toggle;
+        ToggleCursor(toggle);
+    }
+
+    public void OnViewSwap(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            if (ChangeView)
+            {
+                camera.localPosition = new Vector3(0.4f,1.5f,-2.5f);
+            }
+            else
+            {
+                camera.localPosition = new Vector3(0,1,0);
+            }
+            ChangeView = !ChangeView;
+        }
     }
 }

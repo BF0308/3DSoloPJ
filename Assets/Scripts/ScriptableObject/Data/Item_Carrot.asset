@@ -25,3 +25,4 @@ MonoBehaviour:
   buffs:
   - type: 1
     time: 30
+    value: 1000

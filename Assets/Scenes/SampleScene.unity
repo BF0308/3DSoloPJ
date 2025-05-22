@@ -309,6 +309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 94394159}
+  - component: {fileID: 94394163}
   - component: {fileID: 94394162}
   - component: {fileID: 94394158}
   - component: {fileID: 94394161}
@@ -381,7 +382,19 @@ MonoBehaviour:
     m_ActionId: 23dc2e3a-6567-4653-81a9-cc24b3163173
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 94394157}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnInventory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 712c72bf-f0f6-4dbc-905a-efe0e655c39d
     m_ActionName: Player/Inventory[/Keyboard/tab]
   - m_PersistentCalls:
@@ -443,8 +456,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   condition: {fileID: 0}
+  effect: {fileID: 0}
   itemData: {fileID: 0}
   spawnPoint: {fileID: 0}
+  dropPosition: {fileID: 399752744}
 --- !u!114 &94394157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +520,7 @@ Transform:
   m_Children:
   - {fileID: 1902603460}
   - {fileID: 225552676}
+  - {fileID: 399752744}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &94394160
@@ -566,6 +582,18 @@ MonoBehaviour:
     m_Bits: 256
   curInteractGameObject: {fileID: 0}
   promptText: {fileID: 1459752143}
+--- !u!114 &94394163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94394154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b5455bc858e9344be36854f908ef3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &164086149
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +676,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 164086152}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 459574544}
+        m_TargetAssemblyTypeName: UIInventory, Assembly-CSharp
+        m_MethodName: OnDropBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &164086152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -991,6 +1031,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395953026}
   m_CullTransparentMesh: 1
+--- !u!1 &399752743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399752744}
+  m_Layer: 3
+  m_Name: dropPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &399752744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399752743}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 94394159}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &459574539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,6 +1071,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 459574540}
+  - component: {fileID: 459574544}
   - component: {fileID: 459574543}
   - component: {fileID: 459574542}
   - component: {fileID: 459574541}
@@ -1093,6 +1165,31 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!114 &459574544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459574539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74f36ce96653f33418bfe20a31ab9164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSlots: []
+  inventoryWindow: {fileID: 459574539}
+  slotPanel: {fileID: 895937717}
+  dropPosition: {fileID: 0}
+  selectedItemName: {fileID: 461666686}
+  selectedItemDescription: {fileID: 1401167078}
+  selectedItemStatName: {fileID: 677718310}
+  selectedItemStatValue: {fileID: 1603149275}
+  useBtn: {fileID: 2117521375}
+  equipBtn: {fileID: 1573215023}
+  unEquipBtn: {fileID: 318503201}
+  dropBtn: {fileID: 164086149}
+  effect: {fileID: 0}
 --- !u!1 &461666684
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,7 +3064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69c244149a8417e4980467369f1106a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  padPower: 700
+  padPower: 400
 --- !u!1 &1326499321
 GameObject:
   m_ObjectHideFlags: 0
@@ -4825,7 +4922,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2117521378}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 459574544}
+        m_TargetAssemblyTypeName: UIInventory, Assembly-CSharp
+        m_MethodName: OnUseBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2117521378
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,6 +31,10 @@ public class PlayerCondition : MonoBehaviour
     {
         health.Add(amount);
     }
+    public void StaminaHeal(float amount)
+    {
+        stamina.Add(amount);
+    }
 
     public void Die()
     {

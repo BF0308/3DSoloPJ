@@ -6,9 +6,10 @@ using UnityEngine;
 public class JumpPad : MonoBehaviour
 {
     [SerializeField] private float padPower;
-    
+
     private void OnCollisionEnter(Collision other)
     {
-        other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * padPower, ForceMode.Impulse);
+        other.gameObject.GetComponent<Rigidbody>().
+            AddForce(Vector3.up *(padPower + CharacterManager.Instance.Player.controller.jumpPower), ForceMode.Impulse);
     }
 }

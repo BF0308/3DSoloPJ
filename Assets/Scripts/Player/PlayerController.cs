@@ -1,11 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    
-    [Header("Movement")] public float moveSpeed;
-
+    [Header("Movement")] 
+    public float moveSpeed;
     private Vector2 curMovementInput;
     public float jumpPower;
     public LayerMask groundLayerMask;
@@ -13,12 +13,12 @@ public class PlayerController : MonoBehaviour
     [Header("Look")] public Transform cameraContainer;
     public float minXLook;
     public float maxXLook;
-    private float camCurXRot;
     public float lookSensitivity;
+    public bool canLook = true;
+    private float camCurXRot;
 
     private Vector2 mouseDelta;
-
-    [HideInInspector] public bool canLook = true;
+    public Action inventory;
 
     private Rigidbody rigidbody;
 
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started && IsGrounded())
         {
             rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
-            CharacterManager.Instance.Player.condition.StaminaConsume(jumpPower*0.1f);
+            CharacterManager.Instance.Player.condition.StaminaConsume(jumpPower * 0.1f);
         }
     }
 
@@ -112,6 +112,22 @@ public class PlayerController : MonoBehaviour
 
     public void ToggleCursor(bool toggle)
     {
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
+    }
+
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            inventory?.Invoke();
+            ToggleCursor();
+        }
+    }
+
+    public void ToggleCursor()
+    {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
     }

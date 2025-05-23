@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Item_Apple
   m_EditorClassIdentifier: 
   displayName: "\uC0AC\uACFC"
-  description: "\uB9DB\uC788\uC5B4\uBCF4\uC774\uB294 \uC0AC\uACFC\uC785\uB2C8\uB2E4."
+  description: "\uB9DB\uC788\uC5B4\uBCF4\uC774\uB294 \uC0AC\uACFC\uC785\uB2C8\uB2E4. 
+    \uC2A4\uD53C\uB4DC\uC5C5"
   type: 1
   icon: {fileID: 21300000, guid: cccb8c7a59602e848b3c2ee9f4a460ed, type: 3}
   dropPrefab: {fileID: 7243672574274433803, guid: 11a92b969e6f5d54f9c24b86d9c84789, type: 3}
@@ -26,5 +27,5 @@ MonoBehaviour:
     value: 20
   buffs:
   - type: 0
-    time: 30
-    value: 100
+    time: 10
+    value: 25

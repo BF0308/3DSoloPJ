@@ -15,15 +15,17 @@ public class Effect : MonoBehaviour
 
         isJumpingBuffActive = true;
         jumpBuffDuration = time;
-
+        CharacterManager.Instance.Player.condition.buffui.JumpBuff.maxValue = time;
         CharacterManager.Instance.Player.controller.jumpPower += value;
 
-        while (jumpBuffDuration > 0)
+        while (jumpBuffDuration >= 0)
         {
             jumpBuffDuration -= Time.deltaTime;
-            Debug.Log(jumpBuffDuration+"점프쿨");
+            CharacterManager.Instance.Player.condition.buffui.JumpBuff.curValue = jumpBuffDuration;
             yield return null;
         }
+
+        jumpBuffDuration = 0;
         Debug.Log(jumpBuffDuration+"점프버프 끝");
         CharacterManager.Instance.Player.controller.jumpPower -= value;
         isJumpingBuffActive = false;
@@ -35,16 +37,18 @@ public class Effect : MonoBehaviour
 
         isSpeedBuffActive = true;
         speedBuffDuration = time;
-
+        CharacterManager.Instance.Player.condition.buffui.SpeedBuff.maxValue = time;
         CharacterManager.Instance.Player.controller.moveSpeed += value;
 
-        while (speedBuffDuration > 0)
+        while (speedBuffDuration >= 0)
         {
             speedBuffDuration -= Time.unscaledDeltaTime;
             
-            Debug.Log(speedBuffDuration+"스피드쿨");
+            CharacterManager.Instance.Player.condition.buffui.SpeedBuff.curValue = speedBuffDuration;
             yield return null;
         }
+
+        speedBuffDuration = 0;
         Debug.Log(speedBuffDuration+"스피드버프 끝");
         CharacterManager.Instance.Player.controller.moveSpeed -= value;
         isSpeedBuffActive = false;

@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerCondition : MonoBehaviour
 {
     public UIConditions uiCondition;
-
+    public BuffUI buffui;
     Condition health//UI컨디션에 있는 health를 리턴해줌
     {
         get { return uiCondition.health; }
@@ -15,7 +15,17 @@ public class PlayerCondition : MonoBehaviour
         get { return uiCondition.stamina; }
     }
 
-    public event Action onTakeDamage;
+    Condition jumpBuff
+    {
+        get { return buffui.JumpBuff; }
+    }
+
+    Condition speedBuff
+    {
+        get { return buffui.SpeedBuff; }
+    }
+
+    //public event Action onTakeDamage;
 
     private void Update()
     {
